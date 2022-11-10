@@ -7,7 +7,7 @@ export default class AboutBlank extends Component {
   render() {
     return (
       <div className={styles['playlist-accordion']}>
-        <Accordion>
+        <Accordion variant='success'>
           <Accordion.Item eventKey="0">
             <Accordion.Header>Lewis Playlist</Accordion.Header>
             <Accordion.Body>

@@ -25,37 +25,36 @@ export default class Portalsearch extends Component {
     }
   }
 
-  handleArt = (dataObj) => 
-  {
+  handleArt = (dataObj) => {
 
-    let artMap =  dataObj?.artists?.items[0]?.id
+    let artMap = dataObj?.artists?.items[0]?.id
 
-    this.setState({mapData: artMap})
-    
+    this.setState({ mapData: artMap })
+
   }
 
   getData = async (e) => {
     e.preventDefault();
     try {
-    let artist = this.state.artist;
+      let artist = this.state.artist;
 
 
-    let data = await axios({
-    
-      method: 'get', //you can set what request you want to be
-      url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`,
-      data: {},
-      headers: {
-        'accept': 'application/json',
-        'Content-type': 'application/json',
-        'Authorization': 'Bearer ' + this.state.token,
-      }
+      let data = await axios({
 
-    })
-    console.log(data.data)
-    this.handleArt(data.data)
-    this.setState({artistData: data.data})
-    setTimeout(this.getRec, 1500)
+        method: 'get', //you can set what request you want to be
+        url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`,
+        data: {},
+        headers: {
+          'accept': 'application/json',
+          'Content-type': 'application/json',
+          'Authorization': 'Bearer ' + this.state.token,
+        }
+
+      })
+      console.log(data.data)
+      this.handleArt(data.data)
+      this.setState({ artistData: data.data })
+      setTimeout(this.getRec, 1500)
     }
     catch (error) {
       console(error)
@@ -98,8 +97,8 @@ export default class Portalsearch extends Component {
 
     try {
       console.log(id)
-     let songArr = await axios({
-        method: 'get', 
+      let songArr = await axios({
+        method: 'get',
         url: `https://api.spotify.com/v1/recommendations?limit=9&seed_artists=${id}&seed_genres=${genre}&target_danceability=${dnce}&target_energy=${energy}&target_loudness=${loud}&target_valence=${vibe}`,
         data: {},
         headers: {
@@ -107,10 +106,10 @@ export default class Portalsearch extends Component {
           'Content-type': 'application/json',
           'Authorization': 'Bearer ' + this.state.token,
         }
-  
+
       })
       this.props.handleRec(songArr.data)
-      this.setState({songs: songArr.data})
+      this.setState({ songs: songArr.data })
 
     } catch (error) {
       console.log(error.message)

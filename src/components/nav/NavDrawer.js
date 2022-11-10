@@ -26,10 +26,11 @@ export default class NavDrawer extends Component {
       }
     })
       .then(data => this.setState({
-
+        userID: data.data.id,
         profileName: data.data.display_name,
         profilePic: data.data.images[0].url
-      }))
+      },() => this.props.getUserId(this.state.userID)
+      ))
       .catch(error => console.log(error))
 
   }

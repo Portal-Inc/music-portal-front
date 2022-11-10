@@ -11,8 +11,7 @@ export default class DailyHomeCard extends Component {
 
   getFeatured = async () => {
     try {
-      console.log(this.props)
-      console.log('getting data')
+
       const data = await axios({
         method: 'get', //you can set what request you want to be
         url: '	https://api.spotify.com/v1/browse/featured-playlists?limit=6',
@@ -41,3 +40,6 @@ export default class DailyHomeCard extends Component {
     )
   }
 }
+
+// https://api.spotify.com/v1/me/player/play?device_id=8d49c0e1f707efaea97e083e387a731ce87b07e7
+// https://api.spotify.com/v1/me/player/play?device_id=8d49c0e1f707efaea97e083e387a731ce87b07e7

@@ -6,6 +6,7 @@
   --drawer-text: rgb(180, 180, 180);
   --footer-background: rgb(0, 255, 140);
   --footer-icons: black;
+  --card-heading: white;
   /* drawer colors are not currently connected to the variables, these are here for reference */
   --drawerBlue: #000000;
   --drawerGreen: rgb(0, 255, 140);

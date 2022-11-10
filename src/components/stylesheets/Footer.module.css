@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
   background-color: var(--footer-background);
-  height: 100px;
+  position: fixed;
+  bottom: 0;
 }
-

@@ -1,0 +1,50 @@
+.table-trackdata {
+  width: 100%;
+}
+
+.tr-trackdata{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5%;
+  margin-top: 2%;
+}
+
+.tr-trackdata > td {
+width: 30%;
+font-size: 1.2rem;
+}
+
+.tbody-trackdata {
+width: 100%;
+}
+
+.thead-trackdata > tr{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.button-parent {
+  width: 10px;
+  height: 10px;
+  position: relative;
+}
+
+.button-parent > button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right:0;
+  top:0;
+  padding: 5px;
+  opacity: 0;
+}
+
+.button-wrapper {
+  padding-right: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}

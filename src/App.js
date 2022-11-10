@@ -36,6 +36,13 @@ export default class App extends Component {
     this.setState({ topData: topData })
   }
 
+  getUserID = (userid) => {
+    this.setState({ user_id: userid })
+  }
+  grabPlayingStatus = (isItPlaying) => {
+    this.setState({ currentlyPlaying: isItPlaying }, () => console.log(this.state.currentlyPlaying))
+  }
+
 
 
   postUserData = async (obj) => {
@@ -59,40 +66,40 @@ export default class App extends Component {
 
     return (
       <React.Fragment>
-         <NavArea />
+        <NavArea />
+
+          {this.state.token ? <NavDrawer token={this.state.token}  getUserId={this.getUserID}/> : null}
+
         <Routes>
           <Route path='/' element={
             !code ? <SplashPage checkLogin={this.checkLogin} /> :
               <React.Fragment >
-                 
+
                 {!this.state.token ? <Auth onGetToken={this.getToken} code={code} /> : null}
-                {this.state.token ? <NavDrawer token={this.state.token} /> : null}
-                {this.state.token ? <Home token={this.state.token} /> : null}
+                {this.state.token ? <Home playingStatus={this.state.currentlyPlaying} token={this.state.token} /> : null}
               </React.Fragment>
           } />
 
           <Route path='/about' element={
             <React.Fragment>
-              {this.state.token ? <NavDrawer token={this.state.token} /> : null}
               {this.state.token ? < About /> : null}
             </React.Fragment>
           } />
           <Route path='/music-portal' element={
             <React.Fragment >
-              {this.state.token ? <NavDrawer token={this.state.token} /> : null}
               {this.state.token ? <MusicPortal data={this.state.topData} pushData={this.handleData} token={this.state.token} /> : null}
 
             </React.Fragment>
           } />
 
-   <Route path='/logout' element={
-    <React.Fragment>
+          <Route path='/logout' element={
+            <React.Fragment>
 
-          < SplashPage />
-      </React.Fragment>    
-   } />
+              < SplashPage />
+            </React.Fragment>
+          } />
         </Routes>
-        {this.state.token ? <Footer trackUri={this.trackUri} token={this.state.token} /> : null}
+        {this.state.token ? <Footer playingStatus={this.grabPlayingStatus} trackUri={this.trackUri} token={this.state.token} /> : null}
       </React.Fragment>
     )
   }
