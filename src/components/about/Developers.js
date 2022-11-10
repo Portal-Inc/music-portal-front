@@ -11,12 +11,12 @@ export default class Developers extends Component {
     return (
       <>
       <div className={styles['dev-row-1']}>
-        <DeveloperLewis />
-        <DeveloperSteven />
+        <DeveloperLewis open={this.props.open} show={this.props.show} hide={this.props.hide}/>
+        <DeveloperSteven open={this.props.open} show={this.props.show} hide={this.props.hide}/>
         </div>
         <div className={styles['dev-row-2']}>
-        <DeveloperTrace />
-        <DeveloperZoe />
+        <DeveloperTrace open={this.props.open} show={this.props.show} hide={this.props.hide}/>
+        <DeveloperZoe open={this.props.open} show={this.props.show} hide={this.props.hide}/>
         </div>
       </>
     )
